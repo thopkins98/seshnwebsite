@@ -325,7 +325,8 @@ a {
 .phone-mockup {
   position: relative;
   width: 240px;
-  aspect-ratio: 188 / 388;
+  /* Aspect ratio from measured phone body in phone_035.jpg: 1856×3877px */
+  aspect-ratio: 1856 / 3877;
   overflow: hidden;
   background: #fff;
   border-radius: 30px;
@@ -350,13 +351,16 @@ a {
 }
 
 /* iPhone frame overlay — mix-blend-mode:multiply makes white areas transparent.
-   Phone body is ~47% of the 5000px square image width, centered with
-   ~26.5% horizontal margin and ~1.5% vertical margin on each side. */
+   Pixel-scanned from phone_035.jpg (5000×5000):
+     phone left=1575 (31.5%), top=561 (11.2%), width=1856 (37.1%), height=3877 (77.5%)
+   frame width  = 100% / 0.371 = 270%
+   frame left   = -(31.5% / 37.1%) = -85%  (of container width)
+   frame top    = -(11.2% × frame_height / container_height) = -14.5% (of container height) */
 .phone-frame {
   position: absolute;
-  width: 213%;
-  left: -56%;
-  top: -1.5%;
+  width: 270%;
+  left: -85%;
+  top: -14.5%;
   mix-blend-mode: multiply;
   z-index: 2;
   pointer-events: none;
