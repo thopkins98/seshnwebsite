@@ -195,15 +195,14 @@
               <input type="text" name="name" placeholder="Your name" required autocomplete="name">
               <input type="email" name="email" placeholder="Your email" required autocomplete="email">
             </div>
-            <select name="activity" required>
-              <option value="" disabled selected>What's your primary activity?</option>
-              <option value="snow">❄️  Snow — Ski / Snowboard</option>
-              <option value="surf">🌊  Surf</option>
-              <option value="trail">🏔️  Trail — MTB / Hiking / Backpacking</option>
-              <option value="wind">💨  Wind — Kiteboarding / Windsurfing</option>
-              <option value="rock">🧗  Rock — Climbing</option>
-              <option value="other">Other outdoor activity</option>
-            </select>
+            <p class="sport-pills-label">What sports do you intend to use Seshn for? (Select all that apply)</p>
+            <div class="sport-pills">
+              <label class="sport-pill"><input type="checkbox" name="activity" value="snow"><span>Snow</span></label>
+              <label class="sport-pill"><input type="checkbox" name="activity" value="surf"><span>Surf</span></label>
+              <label class="sport-pill"><input type="checkbox" name="activity" value="trail"><span>Trail</span></label>
+              <label class="sport-pill"><input type="checkbox" name="activity" value="wind"><span>Wind</span></label>
+              <label class="sport-pill"><input type="checkbox" name="activity" value="rock"><span>Rock</span></label>
+            </div>
             <button type="submit" class="btn btn-primary btn-lg">Request Beta Access →</button>
             <p class="form-disclaimer">No spam, ever. We'll only reach out when your access is ready.</p>
           </form>
