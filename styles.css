@@ -683,6 +683,10 @@ a {
     direction: ltr;
   }
 
+  .feature-grid.reverse .feature-phone {
+    order: -1;
+  }
+
   .feature-text p {
     margin: 0 auto;
   }
