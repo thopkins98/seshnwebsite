@@ -74,10 +74,16 @@ function handleForm(formId, onSuccess) {
 handleForm('hero-signup', (data, btn) => {
   btn.textContent = '✓ You\'re in!';
   btn.style.background = '#22C55E';
+  gtag('event', 'hero_signup', {
+    method: 'hero_form'
+  });
 });
 
 // Beta section form
 handleForm('beta-signup', (data) => {
+  gtag('event', 'beta_signup', {
+    sports: data.activity || 'none'
+  });
   const formWrap = document.getElementById('beta-form-wrap');
   const successEl = document.getElementById('beta-success');
   if (formWrap && successEl) {
