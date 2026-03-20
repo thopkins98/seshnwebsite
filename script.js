@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 // ---- Form handling ----
-// Placeholder logic — real Google Sheets submission to be wired up separately
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzXQwBbmQXkADXO91kPj9fZCvHMq3rhjjE1rFWFIISk-tOiZJF0WZpUwjWrhS6u7qB9/exec';
 
 function handleForm(formId, onSuccess) {
   const form = document.getElementById(formId);
@@ -43,20 +43,30 @@ function handleForm(formId, onSuccess) {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const data = Object.fromEntries(new FormData(form));
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
 
-    // TODO: Replace with actual submission endpoint
-    // fetch('YOUR_APPS_SCRIPT_URL', { method: 'POST', body: JSON.stringify(data) })
+    // Collect multiple checked sports into a comma-separated string
+    const sports = formData.getAll('activity');
+    if (sports.length) data.activity = sports.join(', ');
 
     const btn = form.querySelector('.btn');
     const originalText = btn.textContent;
     btn.disabled = true;
     btn.textContent = 'Sending…';
 
-    // Simulate async submission
-    setTimeout(() => {
-      onSuccess(data, btn, originalText);
-    }, 600);
+    fetch(APPS_SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(() => onSuccess(data, btn, originalText))
+    .catch(() => {
+      btn.disabled = false;
+      btn.textContent = originalText;
+      alert('Something went wrong — please try again.');
+    });
   });
 }
 
