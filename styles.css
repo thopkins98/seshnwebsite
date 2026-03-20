@@ -219,7 +219,7 @@ a {
   display: flex;
   align-items: center;
   padding-top: calc(var(--nav-h) + 48px);
-  padding-bottom: 80px;
+  padding-bottom: 40px;
   background:
     radial-gradient(ellipse 70% 55% at 70% -5%, rgba(18,173,238,0.10) 0%, transparent 65%),
     radial-gradient(ellipse 40% 40% at 5% 80%, rgba(18,173,238,0.06) 0%, transparent 60%);
@@ -334,7 +334,7 @@ a {
 
 /* ---- Sports Strip ---- */
 .sports-section {
-  padding: var(--section-y) 0;
+  padding: calc(var(--section-y) / 2) 0 var(--section-y);
   background: var(--bg);
 }
 
