@@ -358,6 +358,7 @@ a {
   object-fit: cover;
   transition: transform 0.5s ease;
   display: block;
+  image-rendering: high-quality;
 }
 
 .sport-card:hover img {
